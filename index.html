@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Woinshet Badicho Code Challenge</title>
+  </head>
+  <body>
+    <h1 id="woinshet-badicho-code-challenge">
+      Woinshet Badicho Code Challenge
+    </h1>
+    <p>
+      Great job on your project, Woinshet. Since we were not able to sync up and
+      review your project together, we want to give you the opportunity to
+      demonstrate your understanding of JavaScript in an asynchronous code
+      challenge as an alternative to the Project Review. You will have 24 hours
+      after acknowledging the receipt of this code challenge to complete and
+      submit it. By reading this message, you are acknowledging that you have
+      received these instructions and should begin working as soon as possible.
+    </p>
+    <h2 id="getting-started">Getting started</h2>
+    <ol type="1">
+      <li>
+        <p>Read <em>all</em> of the instructions carefully.</p>
+      </li>
+      <li>
+        <p>
+          Fork and clone the following repository onto your local machine:
+          <a href="https://github.com/thompsonplyler/basic-html-project"
+            >Repo Link</a
+          >
+        </p>
+      </li>
+    </ol>
+    <h2 id="once-you-have-finished">Once you have finished</h2>
+    <p>
+      Commit and push your changes to your fork like you would after completing
+      a lab using the following commands in the code challenge directory:
+    </p>
+    <ul>
+      <li><code>git add .</code></li>
+      <li><code>git commit -m "Completed assignment"</code></li>
+      <li><code>git push</code></li>
+    </ul>
+    <h2 id="goal-of-this-challenge">Goal of This Challenge</h2>
+    <p>
+      Filter the the book data response that you get back from the same API you
+      used in your project (based on the number of pages). You will not have to
+      add the filtered books to the DOM, you simply need to log the results in
+      the browser’s console.
+    </p>
+    <h2 id="deliverables">Deliverables</h2>
+    <ol type="1">
+      <li>
+        <p>
+          As a user, I should be able to select a range of pages from a drop
+          down list. The selections should be in increments of 100 pages from 0
+          - 1000. ex: (0-100, 100-200, 200-300, 300-400 etc…)
+        </p>
+      </li>
+      <li>
+        <p>
+          As a user, I should see a log in the browser’s console of an array
+          containing only book objects that match the selection from the
+          dropdown. For example, if the ‘100-200’ page range is selected in the
+          dropdown, I should only see book objects that have a
+          <code>numberOfPages</code> property value between 100 and 200 pages.
+          Ex:
+        </p>
+      </li>
+    </ol>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>[{</span>
+        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;url&quot;</span><span class="op">:</span> <span class="st">&quot;https://anapioficeandfire.com/api/books/6&quot;</span><span class="op">,</span></span>
+        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name&quot;</span><span class="op">:</span> <span class="st">&quot;The Sworn Sword&quot;</span><span class="op">,</span></span>
+        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;isbn&quot;</span><span class="op">:</span> <span class="st">&quot;978-0785126508&quot;</span><span class="op">,</span></span>
+        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;authors&quot;</span><span class="op">:</span> [</span>
+        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;George R. R. Martin&quot;</span></span>
+        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numberOfPages&quot;</span><span class="op">:</span> <span class="dv">152</span><span class="op">,</span></span>
+        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;characters&quot;</span><span class="op">:</span> [<span class="op">...</span>]<span class="op">,</span></span>
+        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;povCharacters&quot;</span><span class="op">:</span> []</span>
+        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}]</span></code></pre>
+    </div>
+    <ol start="3" type="1">
+      <li>
+        Copy the following code below in your code challenge’s JavaScript file
+        to get started (See starter code below):
+      </li>
+    </ol>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> api_url <span class="op">=</span> <span class="st">&quot;https://anapioficeandfire.com/api/books&quot;</span><span class="op">;</span></span>
+        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(api_url)<span class="op">;</span></span>
+        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
+        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data)<span class="op">;</span></span>
+        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pageRanges <span class="op">=</span> [</span>
+        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;0-100&quot;</span><span class="op">,</span></span>
+        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;100-200&quot;</span><span class="op">,</span></span>
+        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;300-400&quot;</span><span class="op">,</span></span>
+        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;500-600&quot;</span><span class="op">,</span></span>
+        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;700-800&quot;</span><span class="op">,</span></span>
+        <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;900-1000&quot;</span></span>
+        <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+        <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dropDown <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&quot;select&quot;</span>)<span class="op">;</span></span>
+        <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>pageRanges<span class="op">.</span><span class="fu">forEach</span>((range) <span class="kw">=&gt;</span> {</span>
+        <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> option <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&quot;option&quot;</span>)<span class="op">;</span></span>
+        <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  option<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> range<span class="op">;</span></span>
+        <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  dropDown<span class="op">.</span><span class="fu">append</span>(option)<span class="op">;</span></span>
+        <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+        <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>dropDown<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> (e) <span class="kw">=&gt;</span> {</span>
+        <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+        <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Code your solution here:</span></span>
+        <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+        <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">append</span>(dropDown)<span class="op">;</span></span></code></pre>
+    </div>
+    <script>
+      console.log("Reached the code... sending fetch...");
+      fetch(
+        "https://dev--code-challenge-receipt.thompson-plyler.autocode.gg/",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Accepts: "application/json",
+          },
+          body: JSON.stringify({
+            title: "Test for Assignment",
+            subject: "Woinshet Badicho's Assignment Received",
+          }),
+        }
+      )
+        .then((r) => r.json())
+        .then((response) => {
+          console.log("Received after post: ", response);
+        });
+    </script>
+  </body>
+</html>
